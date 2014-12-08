@@ -4,7 +4,6 @@ import (
 	"bufio"
 	"encoding/json"
 	"errors"
-	"fmt"
 	"io"
 )
 
@@ -127,11 +126,7 @@ func (t *Tle) Scan(reader io.Reader) error {
 
 		if i > 2 {
 			// Create a new two-line element set
-			tle := Tle{}
-			tle.Parse(payload)
-
-			// Send the formatted object to standard output
-			fmt.Println(tle)
+			t.Parse(payload)
 
 			// Re-initiate our variables to receive the next payload
 			payload = make([]string, 3)
