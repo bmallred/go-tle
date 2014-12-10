@@ -106,7 +106,7 @@ func (t *Tle) Parse(input []string) error {
 }
 
 // Scan from a reader taking and output payloads to standard output
-func (t *Tle) Scan(reader io.Reader) error {
+func Scan(reader io.Reader, writer io.Writer) error {
 	// Create a new scanner reading from the standard input
 	scanner := bufio.NewScanner(reader)
 
@@ -125,8 +125,15 @@ func (t *Tle) Scan(reader io.Reader) error {
 		i = i + 1
 
 		if i > 2 {
+			tle := Tle{}
+
 			// Create a new two-line element set
-			t.Parse(payload)
+			tle.Parse(payload)
+			b, err := tle.ToJson()
+			if err != nil {
+				return err
+			}
+			writer.Write(b)
 
 			// Re-initiate our variables to receive the next payload
 			payload = make([]string, 3)
