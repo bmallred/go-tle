@@ -1,19 +1,23 @@
 go-tle
 ======
 
-just what is it?
+Just what is it?
 ----------------
 
-just a quick and dirty implementation of two-line element sets. essentially it takes in a stream of
+Just a quick and dirty implementation of two-line element sets. essentially it takes in a stream of
 data, converts it to the TLE format, and then outputs to another stream the JSON.
 
-how do i get this awesome piece of software?
+How do I get this awesome piece of software?
 --------------------------------------------
 
-`go get github.com/bmallred/go-tle`
+```
+go get github.com/bmallred/go-tle
+```
 
-how do i use it?
+How do I use it?
 ----------------
+
+Create a small project like such...
 
 ```
 package main
@@ -31,12 +35,12 @@ func main() {
 }
 ```
 
-then build it
+... then build it...
 
 `go build`
 
-which should create your executable (will assume it is called `bodacious`) and then do something
-like this
+... which should create your executable (will assume it is called `bodacious`) and then do something
+like this...
 
 ```
 curl "http://www.celestrak.com/NORAD/elements/tle-new.txt" | ./bodacious
